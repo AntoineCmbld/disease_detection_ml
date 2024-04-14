@@ -2,6 +2,8 @@
 import numpy as np
 import pandas as pd
 from scipy.stats import mode
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import LabelEncoder
