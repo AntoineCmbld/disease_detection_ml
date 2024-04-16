@@ -74,8 +74,11 @@ def predictDisease(symptoms):
     nb_prediction = data_dict["predictions_classes"][final_nb_model.predict(input_data)[0]]
     svm_prediction = data_dict["predictions_classes"][final_svm_model.predict(input_data)[0]]
 
-    # making final prediction by taking mode of all predictions
-    final_prediction = mode([rf_prediction, nb_prediction, svm_prediction])[0]
+    # Convert predictions to numerical representation using np.unique
+    predictions, counts = np.unique([rf_prediction, nb_prediction, svm_prediction], return_counts=True)
+
+    # Find the most frequent prediction (mode)
+    final_prediction = predictions[np.argmax(counts)]
     predictions = {
         "rf_model_prediction": rf_prediction,
         "naive_bayes_prediction": nb_prediction,
@@ -86,4 +89,4 @@ def predictDisease(symptoms):
 
 
 # Testing the function
-print(predictDisease("Itching,Skin Rash,Nodal Skin Eruptions"))
+print(predictDisease("Itching,Abdominal Pain,Altered Sensorium,Palpitations,Enlarged Thyroid"))
