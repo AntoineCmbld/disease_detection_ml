@@ -9,3 +9,4 @@ with the symptoms you want (chosen from the first line of the dataset files)\
 Also, don't forget to download the dataset folder!\
 \
 Then, execute the file
+`predict_disease.py`
